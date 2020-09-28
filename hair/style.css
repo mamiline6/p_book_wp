@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/*
+Theme Name: Hair Salon
+Theme URI: http://hair.local
+Author: Cat Speak
+Author: URI: http://cat-speak.net/
+Description: サンプルテーマです。
+Version: 1.0
+*/
+
+@import url("css/default.css");
+@import url("css/common.css");
+@import url("css/top.css");
