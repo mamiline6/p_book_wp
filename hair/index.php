@@ -1,15 +1,34 @@
-<h1><?php bloginfo( 'name' ); ?></h1>
-<h2>新着情報一覧</h2>
+<?php get_header(); ?>
 
-<?php // 投稿を出力するループ ?>
-<?php if( have_posts() ) : ?>
+<main id="main">
+	<h1>News</h1>
+
+	<?php // 投稿を出力するループ ?>
+	<?php if( have_posts() ) : ?>
+
 		<?php while( have_posts() ) : the_post(); ?>
-			<?php // 各記事を出力 ?>
-			<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-			<p class="date"><?php the_time('Y.m.d'); ?></p>
-			<?php the_excerpt(); ?>
-			<p class="more"><a href="<?php the_permalink(); ?>">続きを読む</a></p>
-		<?php endwhile; ?>
-<?php else: ?>
+
+			<div class="entry">
+				<?php // 各記事を出力。最大出力数は、管理画面で設定 ?>
+				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+				<p class="date"><?php the_time('Y.m.d'); ?></p>
+				<?php the_excerpt(); ?>
+				<p class="more"><a href="<?php the_permalink(); ?>">続きを読む</a></p>
+			</div><!-- .entry -->
+	
+			<?php endwhile; ?>
+			
+			<div class="navPage">	
+				<?php // ページリンク出力 ?>
+				<p class="prev"><?php previous_posts_link('%link', '前のページへ'); ?></p>
+				<p class="next"><?php next_posts_link('次のページへ'); ?></p>
+			</div><!-- .navPage -->
+
+	<?php else: ?>
 		<p>現在表示する記事がありません</p>
-<?php endif; ?>
+	<?php endif; ?>
+
+</main>
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
