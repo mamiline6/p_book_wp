@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main id="main">
-
+<?php the_topicpath(); ?>
 <?php // ページ（page.php）のメインループ ?>
 <?php while( have_posts() ) : the_post(); ?>
 
