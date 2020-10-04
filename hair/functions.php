@@ -60,4 +60,16 @@ function the_topicpath() {
 	echo '<a href="'. home_url('/') .'">Home</a> &gt;';
 	echo $links.$title.'</p>';
 }
+
+/**
+ * 存在しないページを指定された場合に、404 ページを表示する
+ */
+function redirect_404() {
+	// メインページ・シングルページ・アーカイブ（月別）・ページ以外の指定
+	// の場合、404 ページを表示する
+	if( is_home() || is_single() || is_month() || is_page() ) return;
+	include( TEMPLATEPATH.'/404.php' );
+	exit;
+}
+add_action( 'template_redirect', 'redirect_404' );
 ?>
