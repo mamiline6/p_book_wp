@@ -72,4 +72,13 @@ function redirect_404() {
 	exit;
 }
 add_action( 'template_redirect', 'redirect_404' );
+
+/**
+ * 不要な wp_head() を除去する（wp-include/default-filters.php）
+ */
+// remove_action( 'wp_head', 'feed_links' );
+// remove_action( 'wp_head', 'feed_links_extra' );
+// remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+// remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
 ?>
