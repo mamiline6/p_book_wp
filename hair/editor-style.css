@@ -1,0 +1,523 @@
+@charset "UTF-8";
+
+/* Setting */
+
+body {
+	background: #FFFFFF;
+	font: 13px sans-serif;
+	color: #000000;
+}
+
+* html body { /* for IE6 */
+	font-size: small;
+}
+	
+*:first-child+html body { /* for IE7 */
+	font-size: small;
+}
+
+ul {
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+ol {
+	list-style-position: outside;
+}
+	
+table {
+	border-collapse: collapse;
+}
+
+
+/* CSS Document */
+
+#wrapper {
+	width:960px;
+	margin:0 auto;
+	border-top:3px solid #000;
+	position:relative;
+}
+
+
+/*-----------------------------------------------------
+header
+-----------------------------------------------------*/
+#header {
+	border-bottom:1px solid #000;
+	margin-bottom:25px;
+	min-height:60px;
+}
+#header h1 {
+	margin-top:22px;
+	float:left;
+}
+
+/*
+グローバルナビ：wp-list-pagesで表示
+*/
+#header ul#navGlobal {
+	text-align:right;
+	font-family:"Times New Roman", Times, serif;
+	font-size:138.5%;
+	margin-top:32px;
+	float:right;
+}
+#header ul#navGlobal li {
+	display:inline-block;
+}
+#header ul#navGlobal li a {
+	color:#000;
+	padding:0 18px 13px;
+	display:inline-block;
+	border-bottom:3px solid #FFFFFF;
+}
+#header ul#navGlobal li a:hover {
+	border-bottom:3px solid #000;
+}
+
+/*
+wp-list-pagesで自動出力されるクラス
+現在選択されているページの時 current_page_item
+現在選択されているページの親ページの時 current_page_parent
+現在選択されているページの最上位ページの時 current_page_ancestor
+を利用して選択状態にする
+*/
+#header ul#navGlobal li.current_page_item a,
+#header ul#navGlobal li.current_page_parent a,
+#header ul#navGlobal li.current_page_ancestor a {
+	border-bottom:3px solid #000;
+}
+
+
+/*-----------------------------------------------------
+footer
+-----------------------------------------------------*/
+#footer {
+	clear:both;
+	border-top:1px solid #000;
+}
+#footer p {
+	font-family:"Times New Roman", Times, serif;
+	padding:10px 0;
+}
+
+/*-----------------------------------------------------
+container
+-----------------------------------------------------*/
+#container {
+	clear:both;
+	margin-bottom:10px;
+}
+
+
+/*-----------------------------------------------------
+side
+-----------------------------------------------------*/
+#side {
+	width:200px;
+	float:left;
+}
+
+/*
+サブナビ：wp-list-pagesで表示
+*/
+#side #navSub h2 a {
+	display:block;
+	background:url(../images/side_h2_bg.jpg) top left no-repeat;
+	font-family:"Times New Roman", Times, serif;
+	font-size:184.6%;
+	color:#FFFFFF;
+	font-weight:normal;
+	border-bottom:1px solid #000;
+	padding:16px 0 50px 16px;
+	margin-bottom:3px;
+}
+#side #navSub ul li {
+	zoom:1;
+	vertical-align:bottom;
+}
+#side #navSub ul li a {
+	display:block;
+	color:#000;
+	background:#F0F0F0 url(../images/arrow_n.png) 10px 12px no-repeat;
+	padding:5px 10px 5px 20px;
+	margin-bottom:2px;
+}
+#side #navSub ul li a:hover {
+	color:#FFFFFF;
+	background:#666666 url(../images/arrow_n_r.png) 10px 12px no-repeat;
+}
+/*
+wp-list-pagesで現在選択されているページの時
+自動出力されるクラス current_page_item 
+を利用して選択状態にする
+*/
+#side #navSub ul li.current_page_item a {
+	color:#FFFFFF;
+	background:#666666 url(../images/arrow_n_r.png) 10px 12px no-repeat;
+}
+
+/*-----------------------------------------------------
+content
+-----------------------------------------------------*/
+#main {
+	width:710px;
+	float:right;
+	margin-bottom:10px;
+}
+#main a ,#main a:link {
+	color:#097d00;;
+	text-decoration:underline;
+}
+#main a:hover , #main a:active {
+	color:#12be05;
+}
+
+
+/*topicpath*/
+.topicpath {
+	font-size:92.3%;
+	margin-bottom:30px;
+}
+.topicpath a ,.topicpath a:link {
+	color:#000;
+	text-decoration:underline;
+}
+.topicpath a:hover ,.topicpath a:active {
+	color:#666666;	
+}
+
+/*pagetop*/
+.pagetop {
+	text-align:right;
+	margin-top:40px;
+	clear:both;
+	font-family:"Times New Roman", Times, serif;
+}
+.pagetop a {
+	background:url(../images/arrow_top.png) left no-repeat;
+	padding-left:10px;
+}
+.pagetop a ,.pagetop a:link {
+	color:#000;
+}
+.pagetop a:hover ,.pagetop a:active {
+	color:#666666;	
+}
+
+
+/*navPage*/
+#main .navPage {
+	clear:both;
+	margin-top:10px;
+}
+#main .navPage .prev {
+	width:350px;
+	float:left;
+}
+#main .navPage .next {
+	width:350px;
+	float:right;
+}
+
+#main .navPage .prev a {
+	display:block;
+	color:#000;
+	background:#F0F0F0 url(../images/arrow_p.png) 10px 14px no-repeat;
+	padding:8px 10px 8px 20px;
+	text-decoration:none;
+}
+#main .navPage .prev a:hover {
+	color:#FFFFFF;
+	background:#666666 url(../images/arrow_p_r.png) 10px 14px no-repeat;
+}
+#main .navPage .next a {
+	display:block;
+	color:#000;
+	background:#F0F0F0 url(../images/arrow_n.png) 333px 14px no-repeat;
+	padding:8px 20px 8px 10px;
+	text-decoration:none;
+	text-align:right;
+}
+#main .navPage .next a:hover {
+	color:#FFFFFF;
+	background:#666666 url(../images/arrow_n_r.png) 333px 14px no-repeat;
+}
+
+
+#main h1 {
+	font-size:153.8%;
+	border-bottom:1px solid #000;
+	padding:5px 0;
+	margin-bottom:10px;
+}
+#main p.date {
+	font-family:"Times New Roman", Times, serif;
+	margin-bottom:25px;
+}
+
+
+/*-----------------------------------------------------
+entry
+-----------------------------------------------------*/
+#main .entry {
+	border-bottom:1px dotted #000;
+	margin:20px 0;
+	padding-bottom:20px;
+	line-height:180%;
+}
+
+#main .entry h2 {
+	font-size:123.1%;
+}
+#main .entry p.date {
+	margin-bottom:0px;
+}
+#main .entry p.more {
+	margin-top:5px;
+}
+#main .entry p.more a {
+	background:url(../images/arrow_bl.png) left no-repeat;
+	padding-left:10px;
+}
+
+/*-----------------------------------------------------
+childPage
+親ページでアイキャッチ画像とタイトル抜粋を表示する
+-----------------------------------------------------*/
+#main .childPage {
+	border:1px solid #999;
+	margin:20px 0;
+	padding:10px;
+	line-height:180%;
+}
+/*
+アイキャッチ画像には、クラス wp-post-image が入る
+*/
+#main .childPage img.wp-post-image {
+	float:left;
+	margin-right:20px;
+}
+#main .childPage h2 {
+	font-size:123.1%;
+	border-bottom:1px solid #999;
+	padding:5px;
+	margin-bottom:10px;
+	overflow:hidden;
+}
+#main .childPage h2 a {
+	color:#000;
+	text-decoration:none;
+	background:url(../images/arrow_bl.png) 0 5px no-repeat;
+	padding-left:10px;
+}
+#main .childPage h2 a:hover {
+	color:#666;
+}
+#main .childPage p {
+	overflow:hidden;
+}
+
+/*-----------------------------------------------------
+content
+-----------------------------------------------------*/
+#main .content {
+	margin-bottom:20px;
+	padding-bottom:20px;
+	border-bottom:1px dotted #000;
+}
+
+/*
+記事本文エリアのフォーマット
+editor-style.cssとあわせる部分
+*/
+.content p,
+.content ul,
+.content ol,
+.content dl,
+.content blockquote,
+.content pre,
+.content table {
+	margin: 1em 0;
+	line-height:1.8em;
+}
+.content ul,
+.content ol {
+	margin-left:30px;
+}
+.content ul {
+	list-style:square;
+}
+.content strong {
+	color:#1d6469;
+}
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+	margin:2em 0 1em;
+}
+.content h2 {
+	font-size:138.5%;
+	background:url(../images/h2_bg.jpg) top left no-repeat;
+	padding:3px 12px;
+}
+.content h3 {
+	font-size:123.1%;
+	border-bottom:1px solid #CCCCCC;
+	padding:3px 12px;
+}
+.content h4 {
+	font-size:123.1%;
+	border-left:3px solid #CCCCCC;
+	padding:3px 9px;
+}
+.content h5 {
+	font-size:107.7%;
+	background:url(../images/h5_bg.jpg) 0 7px no-repeat;
+	padding:0 12px;
+}
+
+/* Tables */
+.content table caption {
+	font-weight:bold;
+	text-align:left;
+}
+.content table {
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	text-align: left;
+	margin: 1em 0;
+	width: 100%;
+}
+.content tr th {
+	border: 1px solid #ddd;
+	background-color:#eee;
+	font-weight:bold;
+	padding:5px;
+}
+.content td {
+	border: 1px solid #ddd;
+	padding:5px;
+}
+
+
+/* 
+Alignment 
+画像の配置CSSをWordPressの指定と合わせる
+*/
+.alignleft {
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	float: right;
+	margin-left: 1.5em;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.size-full,
+img.size-large {
+	max-width: 97.5%;
+	width: auto;
+	height: auto;
+}
+img.alignleft,
+img.alignright,
+img.aligncenter {
+	margin-bottom: 1.5em;
+}
+
+/* 
+Caption 
+キャプション付き画像のCSSをWordPressの指定と合わせる
+*/
+p img,
+.wp-caption {
+	margin-top: 0.4em;
+	text-align:center;
+}
+.wp-caption {
+	background-color: #eee;
+	margin-bottom: 1.5em;
+	padding: 5px 0;
+}
+.wp-caption img {
+	display: block;
+	margin: 0 auto;
+}
+.wp-caption .wp-caption-text,
+.gallery-caption {
+	font-size:92.3%;
+}
+.wp-caption .wp-caption-text {
+	margin:0;
+	padding: 5px 5px 0 5px;
+}
+
+/* CSS Document */
+
+/* Reset */
+
+body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, ol, li, 
+brockquote, pre, table, caption, th, td, address, 
+form, fieldset, legend, object {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, pre, table, code, kbd, samp, acronym, input, textarea {
+	font-size: 100%;
+}
+
+a, ins {
+	text-decoration: none;
+}
+
+address, em, cite, dfn, var {
+	font-style: normal;
+}
+
+input, textarea {
+	font-family: sans-serif;
+	font-weight: normal;
+}
+
+img {
+	vertical-align: baseline;
+}
+
+a img {
+	border: none;
+}
+
+
+/*-----------------------------------------------------
+contact ,error404,dberror
+page-contact.php、404.php、db-error.phpは、
+サイドバーなしのため#mainをセンター寄せする
+-----------------------------------------------------*/
+body.contact #main,
+body.error404 #main,
+body.dberror #main {
+	margin:0 auto;
+	float:none;
+}
+
+
+/* clearfix */
+#header ,#container ,#main .navPage ,#main .childPage ,#main .content ,.entry {
+	zoom:1;
+}
+#header:after ,#container:after ,#main .navPage:after ,#main .childPage:after ,#main .content:after ,.entry:after {
+    content: ""; 
+    display: block; 
+    clear: both;
+}

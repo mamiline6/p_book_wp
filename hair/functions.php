@@ -18,4 +18,8 @@ function single_month_title_jp() {
 add_theme_support( 'post-thumbnails', array( 'page' ) );
 set_post_thumbnail_size( 200, 150, true );
 
+/**
+ * 管理画面にエディタースタイルシートを適用する
+ */
+add_editor_style();
 ?>
