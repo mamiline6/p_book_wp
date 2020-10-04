@@ -5,5 +5,6 @@
 			<p>2020&copy; Hair Salon Co.,ltd. </p>
 		</footer>
 	</div><!-- #wrapper -->
+<?php wp_footer(); ?>
 </body>
 </html>
