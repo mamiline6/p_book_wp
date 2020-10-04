@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); ?></title>
     <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+    <?php wp_head(); ?>
 </head>
+<?php if( is_page() ): ?>
+<body <?php body_class( $post->post_name.'' ); ?>>
+<?php else: ?>
 <body <?php body_class(); ?>>
+<?php endif; ?>
+
     <div id="wrapper">
         <header id="header">
             <h1><a href="<?php bloginfo( 'url' ); ?>">
