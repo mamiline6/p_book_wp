@@ -5,6 +5,9 @@
 	<p style="padding:10px 20px; color: #f00; border: 1px solid; margin: 10px 0 30px; background-color: #fe0;">投稿タイプ「メニュー」のタクソノミーテンプレート taxonomy.php を返して表示しています。</p>
 
 	<ul class="menuCategory">
+		<?php wp_nav_menu ( array (
+			'menu' => 'subnav'
+		) ); ?>
 	</ul>
 
 	<div id="menuList">

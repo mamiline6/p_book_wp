@@ -11,13 +11,12 @@
 	<header id="header"><div id="headerInner">
         <h1></h1>
         <p></p>
-        <div id="navGloval">
-            <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
-        </div><!-- /#navGloval -->
+
+        <?php wp_nav_menu ( array (
+            'menu' => 'globalnav',
+            'container_id' => 'navGloval'
+        ) ); ?>
+
     </div></header><!-- /#header -->
 
     <div id="container"><div id="containerInner">
