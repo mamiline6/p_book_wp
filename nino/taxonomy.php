@@ -15,6 +15,9 @@
 		<?php // メニューを出力 ?>
 		<div class="menuItem">
 			<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+			<?php // アイキャッチ画像を出力 ?>
+			<a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) the_post_thumbnail( 'menu_thumbnail' ); ?>
+			</a>
 		</div><!-- /.menuItem -->
 		<?php endwhile; ?>
 	<?php else: ?>

@@ -35,4 +35,13 @@ function add_custom () {
 }
 add_action ( 'init', 'add_custom' );   // init アクションフックで登録
 
+/**
+ * アイキャッチ画像を設定追加する
+ */
+add_theme_support ( 'post-thumbnails', array ( 'post_menu' ) );
+set_post_thumbnail_size ( 450, 450, false );         // カスタム投稿「メニュー」シングルページ用
+add_image_size ( 'menu_thumbnail', 300, 225, true ); // 「メニューカテゴリ」タクソノミーページ用
+add_image_size ( 'top_thumbnail', 150, 150, true );  // フロントページ用
+// add_image_sise ( 'size_thumbnail', 100, 100, true ); // サイドバー用
+
 ?>
