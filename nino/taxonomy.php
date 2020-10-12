@@ -18,6 +18,9 @@
 			<?php // アイキャッチ画像を出力 ?>
 			<a href="<?php the_permalink(); ?>"><?php if ( has_post_thumbnail() ) the_post_thumbnail( 'menu_thumbnail' ); ?>
 			</a>
+			<?php if ( post_custom ( 'PRICE' ) ) : ?>
+				<p class="price">PRICE &yen;<?php echo esc_html ( post_custom ( 'PRICE' ) ); ?></p>
+			<?php endif; ?>
 		</div><!-- /.menuItem -->
 		<?php endwhile; ?>
 	<?php else: ?>
