@@ -49,4 +49,14 @@ add_image_size ( 'top_thumbnail', 150, 150, true );  // フロントページ用
  */
 add_theme_support ( 'menus' );
 
+/**
+ * タクソノミーページ「メニューカテゴリ」の表示順を投稿の昇順に変更する
+ */
+function reverce_tax_menu ( $wp_query ) {
+	if ( is_main_query () && is_tax ( 'cat_menu' ) ) {
+		$wp_query -> set ( 'order', 'ASC' );
+	}
+}
+add_action ( 'pre_get_posts', 'reverce_tax_menu' );
+
 ?>
