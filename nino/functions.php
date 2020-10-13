@@ -44,4 +44,9 @@ add_image_size ( 'menu_thumbnail', 300, 225, true ); // 「メニューカテゴ
 add_image_size ( 'top_thumbnail', 150, 150, true );  // フロントページ用
 // add_image_sise ( 'size_thumbnail', 100, 100, true ); // サイドバー用
 
+/**
+ * カスタムメニューを表示
+ */
+add_theme_support ( 'menus' );
+
 ?>
