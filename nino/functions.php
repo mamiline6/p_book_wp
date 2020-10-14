@@ -77,5 +77,20 @@ function replace_category_name( $cat_name ) {
 }
 add_filter( 'list_cats', 'replace_category_name' );
 
+/**
+ * 親記事で最初に添付された画像1枚を取得
+ */
+function the_image( $post_id ) {
+	$images = get_children( array(
+		'post_parent' => $post_id,
+		'post_type' => 'attachment',
+		'post_mime_type' => 'image',
+		'order' => 'ASC'));
+	if( !empty( $images ) ) {
+		echo wp_get_attachment_image( array_pop( array_keys( $images ) ), 'thumbnail' );
+	} else {
+		echo '<img src=" '. get_bloginfo( 'template_url' ) . '/images/noimage.jpg" width="100" height="100">';
+	}
+}
 
 ?>
