@@ -93,4 +93,56 @@ function the_image( $post_id ) {
 	}
 }
 
+/**
+ * jQuery スクリプトを追加する
+ */
+// function add_wp_head_script() {
+// 	// 管理画面にはスクリプトを追加しない
+// 	if(is_admin()) return;
+// 	// jQuery ロード
+// 	wp_enqueue_script('jquery');
+// 	// 画面共通処理ロード
+// 	wp_enqueue_script('biggerlink',
+// 		get_bloginfo('template_url').'/js/jquery.biggerlink.min.js',
+// 		array('jquery'));
+// 	wp_enqueue_script('common',
+// 		get_bloginfo('template_url').'/js/common/js',
+// 		array('jquery'));
+// 	// フロントページのみ画像切替処理ロード
+// 	if(is_front_page()) {
+// 		wp_enqueue_script('front',
+// 			get_bloginfo('template_url').'/js/front.js',
+// 			array('jquery'));
+// 	}
+// }
+// add_action('wp_print_scripts', 'add_wp_head_script');
+
+function add_wp_head_script() {
+	// 管理画面にはスクリプトを追加しない
+	if(is_admin()) return;
+	// jQuery ロード
+	wp_enqueue_script('jquery');
+	// jQueryプラグインロード
+	wp_enqueue_script('jquery.biggerlink',
+		get_template_directory_uri() . '/js/jquery.biggerlink.min.js');
+	// 画面共通処理ロード
+	wp_enqueue_script('jquery.common',
+		get_template_directory_uri() . '/js/jquery.common.js');
+	// フロントページのみ画像切替え処理ロード
+	if(is_front_page()) {
+		wp_enqueue_script('jquery.front',
+			get_template_directory_uri() . '/js/jquery.front.js');
+	}
+}
+// add_action('wp_print_scripts', 'add_wp_head_script');  非推奨
+add_action('wp_enqueue_scripts', 'add_wp_head_script');
+
+/**
+ * 不要な wp_head() を除去する.(wp-includes/default-filters.php)
+ */
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'feed_links_extra');
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
+
 ?>
