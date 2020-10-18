@@ -178,3 +178,62 @@ register_sidebar(array (
 	'after_widget'  => ''
 ));
 
+/**
+ * スペシャルクレープ・ウィジェット定義
+ */
+class SpecialCrepe extends WP_Widget {
+	/**
+	 * ウィジェット定義の定形コード
+	 * クラス名／関数名／引数名を同一にします
+	 */
+	function SpecialCrepe() {
+		parent::__construct( false, 'SpecialCrepe' );
+	}
+
+	/**
+	 * このブロックでウィジェットに表示したい HTML を出力します
+	 */
+	function widget( $args, $instance ) { ?>
+
+		<?php // サイドバーの設定を取得して変数に展開する ?>
+		<?php extract( $args ); ?>
+		<?php // サイドバー設定の before_widget を出力する ?>
+		<?php echo $before_widget; ?>
+
+		<?php // 表示したい HTML をテンプレートタグなどで出力する ?>
+		<?php // スペシャルを1件出力するマルチループ（サイドバー用） ?>
+		<?php
+			$args = array( 
+				'cat_menu' => 'special',
+				'posts_per_page' => 1);
+			$wp_query = new WP_Query( $args );
+		?>
+
+		<?php if( $wp_query -> have_posts() ): ?>
+			<?php while( $wp_query -> have_posts() ): $wp_query -> the_post(); ?>
+				<?php // サイドバー設定の before_title を出力する ?>
+				<?php echo $before_title; ?>
+				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+				<?php // サイドバー設定の after_title を出力する ?>
+				<?php echo $after_title; ?>
+				<?php if( has_post_thumbnail() ): ?>
+					<?php the_post_thumbnail( 'thumbnail' ); ?>
+				<?php else:
+					echo '<img src="'.get_template_directory_uri() .'/images/noimage02.jpg" width="100" height="100">'; ?>
+				<?php endif; ?>
+					<p><?php echo mb_substr( strip_tags( get_the_content() ), 0, 60 ); ?>…</p>
+			<?php endwhile; ?>
+		<?php else: ?>
+			<p>現在スペシャルクレープはありません。</p>
+		<?php endif; ?>
+		<?php wp_reset_postdata(); ?>
+
+		<?php // サイドバー設定の after_widget を出力する ?>
+		<?php echo $after_widget; ?>
+	<?php }
+}
+// ウィジェットを登録する定形コード
+add_action( 'widgets_init',
+	create_function( '', 'register_widget( "SpecialCrepe" );') 
+);
+
