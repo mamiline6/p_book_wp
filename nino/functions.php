@@ -237,3 +237,58 @@ add_action( 'widgets_init',
 	create_function( '', 'register_widget( "SpecialCrepe" );') 
 );
 
+/**
+ * 新着ブログ・ウィジェット定義
+ */
+class RecentEntry extends WP_Widget {
+
+	/**
+	 * ウィジェット定義の定形コード.
+	 * クラス名/関数名/引数名を同一にします.
+	 */
+	function RecentEntry() {
+		parent::__construct(false, 'RecentEntry');		
+	}
+
+	/**
+	 * このブロックでウィジェットに表示したいHTMLを出力します.
+	 */
+	function widget($args, $instance) { ?>
+		<?php // サイドバーの設定を取得して変数に展開する ?>
+		<?php extract($args); ?>
+		<?php // サイドバー設定の before_widget を出力する ?>
+		<?php echo $before_widget; ?>
+
+		<?php // サイドバー設定の before_title を出力する ?>
+		<?php echo $before_title; ?>
+		新着ブログ
+		<?php // サイドバー設定の after_title を出力する ?>
+		<?php echo $after_title; ?>
+		
+		<?php // 最近の投稿を3件出力するマルチループ（サイドバー用） ?>
+		<?php
+		$args = array(
+			'posts_per_page' => 3
+		);
+		$wp_query = new WP_Query( $args );		
+		?>
+		<?php if($wp_query -> have_posts()) : ?>
+			<?php while ($wp_query -> have_posts()) : $wp_query -> the_post(); ?>
+			<div class="entry">
+				<p class="date"><?php the_time('Y.m.d'); ?></p>
+				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+				<p class="excerpt"><?php echo mb_substr(strip_tags(get_the_content()), 0, 42); ?>...</p>
+			</div><!--end of .entry-->
+			<?php endwhile; ?>
+		<?php  else : ?>
+			<p>現在表示する記事がありません。</p>
+		<?php endif; ?>
+		<?php wp_reset_postdata(); ?>
+
+		<?php // サイドバー設定の after_widget を出力する ?>
+		<?php echo $after_widget; ?>
+<?php }
+}
+// ウィジェットを登録する定形コード.
+add_action('widgets_init',
+	create_function('', 'register_widget("RecentEntry");'));
