@@ -156,3 +156,25 @@ register_sidebar(array(
 	'after_title'   => '</h2>'
 ));
 
+/**
+ * サイドバーの登録（固定ページ / カスタム分類・サイドバー）
+ */
+register_sidebar(array (
+	'name'          => 'Other Sidebar',
+	'before_widget' => '<div class="sideNav %2$s id="%1$s">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h2>',
+	'after_title'   => '</h2>'
+));
+
+/**
+ * サイドバー登録（フッター）
+ */
+register_sidebar(array (
+	'name' => 'Footer',
+	'before_widget' => '<dl>',
+	'after_widget'  => '</dl>',
+	'before_widget' => '',
+	'after_widget'  => ''
+));
+
