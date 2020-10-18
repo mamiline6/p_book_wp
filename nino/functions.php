@@ -145,3 +145,14 @@ remove_action('wp_head', 'feed_links_extra');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 
+/**
+ * サイドバー登録（ブログ・サイドバー）
+ */
+register_sidebar(array(
+	'name'          => 'Blog Sidebar',
+	'before_widget' => '<div class="sideNav %2$s" id="%1$s">',
+	'after_widget'  => '</div>',
+	'before_title'  => '<h2>',
+	'after_title'   => '</h2>'
+));
+
