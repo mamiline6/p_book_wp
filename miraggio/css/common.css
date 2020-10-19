@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* ================================================================================
+	clearFix
+================================================================================ */
+#header,
+#utility-nav,
+#global-nav,
+div.menu,
+#contents-body,
+#home-widget-area,
+#footer-widget-area,
+#update-info ul li,
+.entry-content,
+.textwidget,
+.bread-crumb,
+.navigation ul,
+.clearfix { /zoom : 1; }
+
+#header:after,
+#utility-nav:after,
+#global-nav:after,
+div.menu:after,
+#contents-body:after,
+#home-widget-area:after,
+#footer-widget-area:after,
+#update-info ul li:after,
+.entry-content:after,
+.textwidget:after,
+.bread-crumb:after,
+.navigation ul:after,
+.clearfix:after { content : ''; display : block; clear : both; height:0; }
+
+/* ================================================================================
+	コメントガイドライン［セクション］
+================================================================================ */
+
+/*セクション内 見出し 設定*/
+/* clearfix */
+
+
+/* ================================================================================
+	CSS Tips
+================================================================================ */
+
+/* hover時に画像を発光させる */
+a img {
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	transition: 0.5s;
+}
+a:hover img {
+	filter:alpha(opacity=75);
+	opacity:.75;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+}

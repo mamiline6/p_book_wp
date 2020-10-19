@@ -1,0 +1,92 @@
+@charset "UTF-8";
+/* ================================================================================
+	frameControl
+	外観の枠を定義します
+================================================================================ */
+html{
+	overflow-y:scroll;
+}
+body {
+	color:#333;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/*wrap*/
+#wrap {
+	background:	url(../img/wrap-top-bg.png) repeat-x center top,
+					url(../img/wrap-bottom-bg.png) repeat-x center bottom;
+}
+
+/*container*/
+#container {
+	width:940px;
+	margin:0 auto;
+}
+
+/*header*/
+#header {
+	padding:20px 0 0;
+	margin:0 0 20px;
+}
+
+/*contents-body*/
+#contents-body {
+	margin:0 0 20px;
+}
+
+/*contents*/
+#contents {
+	width:700px;
+	float:left;
+
+	/*DUMMY SETTINGS
+	background:#EEE;
+	padding:5em 0;
+	text-align:center;
+	*/
+}
+.error404 #contents {
+	float:none;
+	margin: 0 auto;
+	text-align:center;
+}
+.error404 .more-link {
+	float:none;
+}
+
+/*sidebar*/
+#sidebar {
+	width:220px;
+	float:right;
+}
+
+/*nav*/
+
+
+/*section*/
+.section {
+}
+
+/*Comments*/
+#comments {
+}
+
+/*footer*/
+#footer {
+}
+#copyright a {
+}
+
+
+
+/* 追加 */
+.g-navList ul {
+}
+.g-navList ul li a {
+	background-color: #CCC;
+	background-image: none;
+	margin: 0px;
+	padding: 0px;
+	text-indent: 0px;
+	height: auto;
+}
