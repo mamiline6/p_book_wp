@@ -9,36 +9,52 @@
 <?php wp_head(); ?>
 </head>
 
-<body class="home">
+<body class="<?php body_class(); ?>">
 <div id="wrap">
-  <div id="header" role="banner">
-    <div class="inner clearfix">
-      <h1 class="site-id">
-        <a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/site_id.png" width="322" height="42" alt="<?php bloginfo( 'description' ); ?><?php bloginfo( 'name' ); ?>" /></a>
-      </h1>
-      <div class="utility">
-        <ul>
-          <li><a href="#">採用情報</a></li>
-          <li><a href="#">サイトマップ</a></li>
-          <li><a href="#">お問い合わせ</a></li>
-        </ul>
-        <div id="search" role="search">
-          <form role="search" method="get" id="searchform" class="searchform" action="#">
-            <div>
-              <input type="text" value="" name="s" id="s" />
-              <input type="submit" id="searchsubmit" value="検索" />
-            </div>
-          </form>          
-        </div><!-- #search end -->
-      </div><!-- .utility end -->
-    </div><!-- .inner end -->
-    <div id="global_nav">
-      <ul>
-        <li class="current-menu-item menu-item-slug-top"><a href="#">トップページ</a></li>
-        <li class="menu-item-slug-about"><a href="#">会社概要</a></li>
-        <li class="menu-item-slug-csr"><a href="#">社会貢献活動（CSR）</a></li>
-        <li class="menu-item-slug-tour-info"><a href="#">ツアー情報</a></li>
-        <li class="menu-item-slug-office"><a href="#">営業所</a></li>
-      </ul>
-    </div>
-  </div><!-- #header end -->
+	<div id="header" role="banner">
+		<div class="inner clearfix">
+			<h1 class="site-id">
+				<a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/site_id.png" width="322" height="42" alt="<?php bloginfo( 'description' ); ?><?php bloginfo( 'name' ); ?>" /></a>
+			</h1>
+			<div class="utility">
+			<?php wp_nav_menu( 
+				array(
+					'container' => false,
+					'theme_location' => 'place_pc_utility'
+				)); 
+			?>
+				<div id="search" role="search">
+					<form role="search" method="get" id="searchform" class="searchform" action="#">
+						<div>
+							<input type="text" value="" name="s" id="s" />
+							<input type="submit" id="searchsubmit" value="検索" />
+						</div>
+					</form>          
+				</div><!-- #search end -->
+			</div><!-- .utility end -->
+		</div><!-- .inner end -->
+		<?php
+			add_filter( 'nav_menu_css_class', 'apt_slug_nav', 10, 2 );
+		?>
+		<?php
+			wp_nav_menu (
+				array(
+					'container' => 'div',
+					'container_id' => 'global_nav',
+					'theme_location' => 'place_pc_global',
+					'depth' => 3
+			));
+		?>
+		<?php
+			remove_filter( 'nav_menu_css_class', 'apt_slug_nav' );
+		?>
+	</div><!-- #header end -->
+<?php
+	if( !is_front_page() ) :
+?>
+<div class="category_image">
+	<img src="<?php echo get_template_directory_uri(); ?>/images/sub/img_cat_def.png" width="950" height="120" alt="">
+</div><!-- .category_image end -->
+<?php
+	endif;
+?>
