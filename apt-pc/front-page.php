@@ -31,16 +31,17 @@
 				</div><!-- end #tourInfo -->
 				<div id="top_info" class="clearfix">
 					<h2><img src="<?php echo get_template_directory_uri(); ?>/images/top/ttl_news.png" width="183" height="25" alt="お知らせ"></h2>
-					<p class="list_link"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/top/btn_linklist.png" width="80" height="29" alt="一覧を見る"></a></p>
+					<p class="list_link"><a href="<?php echo get_permalink( get_page_by_path( 'news' ) ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/top/btn_linklist.png" width="80" height="29" alt="一覧を見る"></a></p>
 					<div class="inner clearfix">
 						<ul>
-							<li>
-								<span class="info_li_inner">
-									<span class="news_date">2013年04月23日</span>
-									<span class="news_category ir">IR情報</span>
-									<a href="#">2014年4月期 第3四半期報告書</a>
-								</span>
-							</li>
+							<?php $args = array( 'post_tyle' => 'post' );
+							$the_query = new WP_Query( $args );
+							while( $the_query -> have_posts() ):
+								$the_query ->the_post();
+								get_template_part( 'content-top-info' );
+							endwhile;
+							wp_reset_postdata();
+							?>
 						</ul>
 					</div>
 				</div><!-- end #topInfo -->
