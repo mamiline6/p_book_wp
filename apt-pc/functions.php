@@ -1,5 +1,31 @@
 <?php
 
+// カスタム投稿タイプ・カスタム分類
+add_action( 'init', 'register_post_type_and_taxonomy' );
+function register_post_type_and_taxonomy(){
+	register_post_type(
+		'branch',
+		array(
+			'labels' => array(
+				'name'         => '営業所情報',
+				'add_new_item' => '営業所を追加',
+				'edit_item'    => '営業所の編集'
+			),
+		'public'       => true,
+		'hierarchical' => true,
+		'show_in_rest' => true,
+		'supports'     => array(
+			'title',
+			'editor',
+			'excerpt',
+			'custom-fields',
+			'thumbnail',
+			'page-attributes'
+			),
+		)
+	);
+}
+
 // カテゴリ情報を取得する
 function apt_category_info( $tax='category' ){
 	global $post;
