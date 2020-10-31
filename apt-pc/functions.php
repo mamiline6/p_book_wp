@@ -1,5 +1,21 @@
 <?php
 
+// 最上位の固定ページ情報を取得する
+function apt_page_ancestor() {
+    global $post;
+    $anc = array_pop( get_post_ancestors( $post ) );
+    $obj = new stdClass;
+    if( $anc ){
+        $obj->ID = $anc;
+        $obj->post_title = get_post( $anc )->post_title;
+    }else {
+        $obj->ID = $post->ID;
+        $obj->post_title = $post->post_title;
+    }
+    return $obj;
+}
+
+
 // カスタムメニュー
 register_nav_menus (
 	array (

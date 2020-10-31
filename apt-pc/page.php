@@ -16,7 +16,7 @@
 			</div><!-- end #content -->
 		</div><!-- end #main -->
 
-	<?php get_sidebar(); ?>
+	<?php get_sidebar( 'page' ); ?>
 
 	</div><!-- end #container -->
 <?php get_footer(); ?>
