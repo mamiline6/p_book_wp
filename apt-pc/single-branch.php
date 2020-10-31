@@ -8,14 +8,6 @@
     while (have_posts()) :
 	  the_post();
 	  get_template_part( 'content-branch' );
-?>
-			<h1 class="page_ttl"><?php the_title(); ?></h1>
-
-			<div class="clearfix">
-				<span class="date"><?php the_date( 'Y年m月d日' ); ?></span>
-			</div><!-- /.clearfix -->
-			<?php the_content(); ?>
-<?php
     endwhile;
   endif;
 ?>
