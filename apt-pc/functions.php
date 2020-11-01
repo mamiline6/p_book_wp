@@ -34,6 +34,38 @@ function register_post_type_and_taxonomy(){
 			),
 		)
 	);
+
+	register_post_type(
+		'tour',
+		array(
+			'labels' => array(
+				'name'         => 'ツアー情報',
+				'add_new_item' => '新規ツアーを追加',
+				'edit_item'    => 'ツアーの編集'
+			),
+			'public' => true,
+			'supports' => array(
+				'title',
+				'editor',
+				'excerpt',
+				'custom-fields',
+				'thumbnail'
+			),
+		)
+	);
+	register_taxonomy(
+		'area',
+		'tour',
+		array(
+			'labels' => array(
+				'name'         => '地域',
+				'add_new_item' => '地域を追加',
+				'edit_item'    => '地域の編集'
+			),
+			'heirachical' => true,
+			'show_admin_column' => true,
+		)
+	);
 }
 
 // カテゴリ情報を取得する
