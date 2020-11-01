@@ -1,5 +1,15 @@
 <?php
 
+// wp_list_pages のクラス属性を変更する
+function apt_add_current( $output ){
+	global $post;
+	$oid = "page-item-{ $post->ID }";
+	$cid = "$oid current_page_item";
+	$output = preg_replace( "/Soid/", $cid, $output );
+	return $output;
+}
+
+
 // カスタム投稿タイプ・カスタム分類
 add_action( 'init', 'register_post_type_and_taxonomy' );
 function register_post_type_and_taxonomy(){
