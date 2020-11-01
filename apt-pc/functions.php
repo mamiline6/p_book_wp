@@ -9,7 +9,6 @@ function apt_add_current( $output ){
 	return $output;
 }
 
-
 // カスタム投稿タイプ・カスタム分類
 add_action( 'init', 'register_post_type_and_taxonomy' );
 function register_post_type_and_taxonomy(){
@@ -44,6 +43,7 @@ function register_post_type_and_taxonomy(){
 				'edit_item'    => 'ツアーの編集'
 			),
 			'public' => true,
+			'show_in_rest' => true,
 			'supports' => array(
 				'title',
 				'editor',
@@ -62,11 +62,22 @@ function register_post_type_and_taxonomy(){
 				'add_new_item' => '地域を追加',
 				'edit_item'    => '地域の編集'
 			),
-			'heirachical' => true,
+			'hierarchical' => true,
 			'show_admin_column' => true,
 		)
 	);
 }
+
+// アイキャッチ画像を利用できるようにする
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 208, 138 ,true );
+
+// メディアのサイズを追加する
+add_image_size( 'main_image', 370 );
+add_image_size( 'tour-archive', 280 );
+add_image_size( 'sub_image', 150 );
+
+
 
 // カテゴリ情報を取得する
 function apt_category_info( $tax='category' ){
