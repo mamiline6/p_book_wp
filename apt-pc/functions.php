@@ -1,5 +1,14 @@
 <?php
 
+// タイトルタグのテキストを出力します
+function apt_simple_title() {
+	if( !is_front_page() ) {
+		echo trim( wp_title( '', false) ). "｜";
+	}
+	bloginfo( 'name' );
+}
+
+
 // wp_list_pages のクラス属性を変更する
 function apt_add_current( $output ){
 	global $post;
