@@ -1,1 +1,1 @@
-				<div class="cleafix" id="page_top_link"><a href="#wrap">このページの先頭へ</a></div>
+				<div class="cleafix" id="page_top_link"><a href="#wrap" onclick="scrollup(); return false;">このページの先頭へ</a></div>
