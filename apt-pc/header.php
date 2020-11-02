@@ -34,6 +34,7 @@
 			</div><!-- .utility end -->
 		</div><!-- .inner end -->
 		<?php
+			add_filter( 'nav_menu_css_class', 'apt_current_nav', 10, 2 );
 			add_filter( 'nav_menu_css_class', 'apt_slug_nav', 10, 2 );
 		?>
 		<?php
@@ -46,6 +47,7 @@
 			));
 		?>
 		<?php
+			remove_filter( 'nav_menu_css_class', 'apt_current_nav' );	
 			remove_filter( 'nav_menu_css_class', 'apt_slug_nav' );
 		?>
 	</div><!-- #header end -->

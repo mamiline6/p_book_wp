@@ -22,7 +22,7 @@ function apt_add_current( $output ){
 	global $post;
 	$oid = "page-item-{ $post->ID }";
 	$cid = "$oid current_page_item";
-	$output = preg_replace( "/Soid/", $cid, $output );
+	$output = preg_replace( "/$oid/", $cid, $output );
 	return $output;
 }
 
@@ -176,6 +176,23 @@ function apt_slug_nav( $css, $item ) {
 	if( $item->object == 'page' ) {
 		$page = get_post( $item->object_id );
 		$css[] = 'menu-item-slug-' . esc_attr( $page->post_name );
+	}
+	return $css;
+}
+
+// wp_nav_menu に current のクラス属性を追加します
+function apt_current_nav ( $css, $item ){
+	if( is_search() ){
+		return $css;
+	}
+	if( $item->title == 'ツアー情報' ){
+		if( get_post_type() == 'tour' || is_tax( 'area' ) ){
+			$css[] = 'current-page-ancestor';
+		}
+	} elseif( $item->title == '営業所'){
+		if( get_post_type() == 'branch'){
+			$css[] = 'current-page-ancestor';
+		}
 	}
 	return $css;
 }
