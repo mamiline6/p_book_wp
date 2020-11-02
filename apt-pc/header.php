@@ -13,9 +13,9 @@
 <div id="wrap">
 	<div id="header" role="banner">
 		<div class="inner clearfix">
-			<h1 class="site-id">
+			<<?php apt_site_id(); ?> class="site-id">
 				<a href="<?php echo home_url( '/' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/site_id.png" width="322" height="42" alt="<?php bloginfo( 'description' ); ?><?php bloginfo( 'name' ); ?>" /></a>
-			</h1>
+			</<?php apt_site_id(); ?>>
 			<div class="utility">
 			<?php wp_nav_menu( 
 				array(

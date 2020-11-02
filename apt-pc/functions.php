@@ -8,6 +8,14 @@ function apt_simple_title() {
 	bloginfo( 'name' );
 }
 
+// サイトID（ロゴタイプやマーク、社名）のマークアップをトップページとそれ以外で切り替えます
+function apt_site_id() {
+	if( is_front_page() ) {
+		echo "h1";
+	} else {
+		echo "div";
+	}
+}
 
 // wp_list_pages のクラス属性を変更する
 function apt_add_current( $output ){
