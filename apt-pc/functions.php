@@ -86,6 +86,16 @@ function apt_bread_crumb( $arr ){
 	return $arr;
 }
 
+// 円貨幣のフォーマットで表示させる
+function apt_convert_yen( $yen ){
+	$yen = mb_convert_kana( $yen, 'n', 'UTF-8' );
+	$yen = preg_replace( '/[^0-9]/', '', $yen );
+	if( is_single() ){
+		$yen = number_format( $yen ).'円';
+		return $yen;
+	}
+}
+
 
 // カテゴリ情報を取得する
 function apt_category_info( $tax='category' ){

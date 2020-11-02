@@ -33,7 +33,7 @@
 	<?php endif; ?>
 	<tr>
 		<th>旅行代金</th>
-		<td><?php echo esc_html( $post->cf_min_fair ); ?>&#xFF5E;<?php echo esc_html( $post->cf_max_fair ); ?></td>
+		<td><?php echo apt_convert_yen( $post->cf_min_fair ); ?>&#xFF5E;<?php echo apt_convert_yen( $post->cf_max_fair ); ?></td>
 	</tr>
 	<?php if( is_single() ): ?>
 	<tr>
