@@ -197,4 +197,34 @@ function apt_current_nav ( $css, $item ){
 	return $css;
 }
 
+// カテゴリーイメージで使用するファイル名を出力します
+function apt_category_image(){
+	global $post;
+	$cat_img = 'def';
+	if( is_page() ){
+		if( in_array( $post->post_name, array( 'about', 'csr', 'tour-info', 'office') ) ){
+			$cat_img = $post->post_name;
+		} else {
+			$anc = array_pop( get_post_ancestors( $post ) );
+			if( $anc ){
+				$anc = get_page( $anc );
+				if( in_array( $anc->post_name, array( 'about', 'csr' ) ) ){
+					$cat_img = $anc->post_name;
+				}
+			}
+		}
+	}
+	if( get_post_type() == 'branch' ){
+		$cat_img = 'office';
+	}
+	if( get_post_type() == 'tour' || is_tax( 'area' ) ){
+		$cat_img = 'tour-info';
+	}
+	if( is_search() ){
+		$cat_img = 'def';
+	}
+	$cat_img = 'img_cat_'. $cat_img.'.png';
+	return $cat_img;
+}
+
 ?>

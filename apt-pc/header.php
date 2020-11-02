@@ -55,7 +55,7 @@
 	if( !is_front_page() ) :
 ?>
 <div class="category_image">
-	<img src="<?php echo get_template_directory_uri(); ?>/images/sub/img_cat_def.png" width="950" height="120" alt="">
+	<img src="<?php echo get_template_directory_uri(); ?>/images/sub/<?php echo apt_category_image(); ?>" width="950" height="120" alt="">
 </div><!-- .category_image end -->
 <?php
 	if( class_exists( 'WP_SiteManager_bread_crumb' ) ):
