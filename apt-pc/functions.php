@@ -227,4 +227,10 @@ function apt_category_image(){
 	return $cat_img;
 }
 
+// 抜粋の文末を変更します
+function apt_excerpt_more( $more ){
+	return '…';
+}
+add_filter( 'excerpt_more', 'apt_excerpt_more' );
+
 ?>
