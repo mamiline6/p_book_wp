@@ -77,6 +77,14 @@ add_image_size( 'main_image', 370 );
 add_image_size( 'tour-archive', 280 );
 add_image_size( 'sub_image', 150 );
 
+// ツアー情報のパンくずナビを修正する
+function apt_bread_crumb( $arr ){
+	if( is_tax( 'area' ) && count( $arr ) ==2 ){
+		$arr[2] = $arr[1];
+		$arr[1] = array( 'title' => 'ツアー情報', 'link' => get_permalink( get_page_by_path( 'tour-info' ) ) );
+	}
+	return $arr;
+}
 
 
 // カテゴリ情報を取得する
